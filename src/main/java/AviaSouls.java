@@ -64,7 +64,7 @@ public class AviaSouls {
             }
 
         }
-        Arrays.sort(result,comparator);
+        Arrays.sort(result, comparator);
         return result;
     }
 }
