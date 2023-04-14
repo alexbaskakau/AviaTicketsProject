@@ -1,3 +1,4 @@
+import ru.netology.Ticket;
 
 import java.util.Comparator;
 

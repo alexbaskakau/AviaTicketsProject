@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ru.netology.Ticket;
 
 public class AviaSoulsTest {
     @Test
@@ -61,7 +62,43 @@ public class AviaSoulsTest {
         service.add(ticket4);
         service.add(ticket5);
         Ticket[] expected = {ticket5, ticket3, ticket1, ticket2, ticket4};
-        Ticket[] actual = service.searchAndSortBy("london", "Minsk", comparator);
+        Ticket[] actual = service.searchAndSortBy("London", "Minsk", comparator);
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void shouldFindOneTicket() {
+        Ticket ticket1 = new Ticket("London", "Moscow", 200, 20, 23);
+        Ticket ticket2 = new Ticket("London", "Minsk", 270, 21, 22);
+        Ticket ticket3 = new Ticket("London", "Vilnius", 250, 22, 24);
+        Ticket ticket4 = new Ticket("London", "Warshaw", 220, 18, 20);
+        Ticket ticket5 = new Ticket("London", "Riga", 289, 19, 22);
+        AviaSouls service = new AviaSouls();
+        TicketTimeComparator comparator = new TicketTimeComparator();
+        service.add(ticket1);
+        service.add(ticket2);
+        service.add(ticket3);
+        service.add(ticket4);
+        service.add(ticket5);
+        Ticket[] expected = {ticket2};
+        Ticket[] actual = service.searchAndSortBy("London", "Minsk", comparator);
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void shoudNotFindTicket() {
+        Ticket ticket1 = new Ticket("London", "Moscow", 200, 20, 23);
+        Ticket ticket2 = new Ticket("London", "Minsk", 270, 21, 22);
+        Ticket ticket3 = new Ticket("London", "Vilnius", 250, 22, 24);
+        Ticket ticket4 = new Ticket("London", "Warshaw", 220, 18, 20);
+        Ticket ticket5 = new Ticket("London", "Riga", 289, 19, 22);
+        AviaSouls service = new AviaSouls();
+        TicketTimeComparator comparator = new TicketTimeComparator();
+        service.add(ticket1);
+        service.add(ticket2);
+        service.add(ticket3);
+        service.add(ticket4);
+        service.add(ticket5);
+        Ticket[] expected = {};
+        Ticket[] actual = service.searchAndSortBy("London", "Manchester", comparator);
         Assertions.assertArrayEquals(expected, actual);
     }
 

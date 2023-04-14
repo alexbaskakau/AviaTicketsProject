@@ -1,6 +1,7 @@
+import ru.netology.Ticket;
+
 import java.util.Arrays;
 import java.util.Comparator;
-
 public class AviaSouls {
     private Ticket[] tickets = new Ticket[0];
 
@@ -55,7 +56,7 @@ public class AviaSouls {
     }
 
     public Ticket[] searchAndSortBy(String from, String to, Comparator<Ticket> comparator) {
-        Ticket[] result = tickets; // массив для ответа
+        Ticket[] result = new Ticket[0]; // &#x43C;&#x430;&#x441;&#x441;&#x438;&#x432; &#x434;&#x43B;&#x44F; &#x43E;&#x442;&#x432;&#x435;&#x442;&#x430;
         for (Ticket ticket : tickets) { // перебираем все билеты
             if (ticket.getFrom().equals(from)) { // совпадает аэропорт вылета
                 if (ticket.getTo().equals(to)) { // совпадает аэропорт прилёта
